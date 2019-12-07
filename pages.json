@@ -1,0 +1,127 @@
+{
+	"tabBar": {
+		"color": "#999999",
+		"selectedColor": "#FF0036",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"text": "商城",
+				"iconPath": "static/mall.png",
+				"selectedIconPath": "static/mall-a.png"
+			},
+			{
+				"pagePath": "pages/news/news",
+				"text": "资讯",
+				"iconPath": "static/news.png",
+				"selectedIconPath": "static/news-a.png"
+			},
+			{
+				"pagePath": "pages/shoppingCard/shoppingCard",
+				"text": "购物车",
+				"iconPath": "static/scart.png",
+				"selectedIconPath": "static/scart-a.png"
+			},
+			{
+				"pagePath": "pages/my/my",
+				"text": "我的",
+				"iconPath": "static/my.png",
+				"selectedIconPath": "static/my-a.png"
+			}
+		]
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"titleNView": false,
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/productInfo/productInfo",
+			"style": {}
+		}, {
+			"path": "pages/news/news",
+			"style": {
+				"enablePullDownRefresh": true,
+				"titleNView": false,
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/shoppingCard/shoppingCard",
+			"style": {
+				"titleNView": false,
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/my/my",
+			"style": {
+				"titleNView": false,
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/artInfo/artInfo",
+			"style": {}
+		}, {
+			"path": "pages/myorders/myorders",
+			"style": {
+				"navigationBarTitleText": "我的订单"
+			}
+		}, {
+			"path": "pages/login/login",
+			"style": {}
+		},
+		{
+			"path": "pages/address/address",
+			"style": {}
+		},
+		{
+			"path": "pages/addressEdit/addressEdit",
+			"style": {}
+		}
+	    ,{
+            "path" : "pages/shopSuccess/shopSuccess",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/addresslist/addresslist",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/money/money",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/changePg/changePg",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/openUrl/openUrl",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/qrcode/qrcode",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/web1/web1",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/web2/web2",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/web3/web3",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/web4/web4",
+            "style" : {}
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "PGShop",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}

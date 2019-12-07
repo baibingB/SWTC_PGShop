@@ -1,0 +1,50 @@
+<template>
+	<view>
+		<view :style="{height:viewHeight+'px', width:'600rpx'}" v-if="isSeize"></view>
+		<view class="grace-header" :style="{'background-image':background}">
+			<view :style="{width:'750rpx', height:top+'px'}" v-if="haveStatusBar"></view>
+			<view :style="{ height:height+'rpx'}"><slot></slot></view>
+		</view>
+	</view>
+</template>
+<script>
+export default{
+	props: {
+		background:{
+			type : String,
+			default : "linear-gradient(to right, #3688FF, #3688FF)"
+		},
+		height:{
+			type : Number,
+			default : 90
+		},
+		haveStatusBar:{
+			type : Boolean,
+			default : true
+		},
+		isSeize : {
+			type:Boolean,
+			default : true
+		}
+	},
+	data(){
+		return{
+			top : 0,
+			viewHeight : 0
+		}
+	},
+	created:function(){
+		if(!this.haveStatusBar){
+			this.viewHeight = uni.upx2px(this.height);
+			return ;
+		}else{
+			var res         = uni.getSystemInfoSync();
+			this.top        = res.statusBarHeight;
+			this.viewHeight = uni.upx2px(this.height) + this.top;
+		}
+	}
+}
+</script>
+<style>
+.grace-header{width:750rpx; position:fixed; left:0; top:0;}
+</style>

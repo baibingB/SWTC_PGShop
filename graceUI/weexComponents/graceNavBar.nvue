@@ -1,0 +1,98 @@
+<template>
+	<scroller show-scrollbar="false" scroll-direction="horizontal" 
+	:class="['grace-nav-bar', isCenter ? 'grace-nav-center' : '']" 
+	:style="{height:(lineHeight +  activeLineHeight + 14) + 'rpx'}">
+		<view class="nav-item" :id="'tabItem'+index" ref="tabitems" 
+		:style="{width:size+'rpx', marginRight:margin+'rpx'}" v-for="(item, index) in items" 
+		:key="index" @click="navchang(index)">
+			<text
+			:class="['nav-item-title', currentIndex == index ? 'nav-active' : '']" 
+			:style="{color:currentIndex == index ? activeColor : color, textAlign : textAlign, lineHeight:lineHeight+'rpx', fontSize:fontSize}"
+			>{{item}}</text>
+			<view class="nav-active-line" 
+			:style="{'background-image':activeLineBg, width:activeLineWidth, height:activeLineHeight+'rpx'}" 
+			v-if="currentIndex == index"></view>
+		</view>
+	</scroller>
+</template>
+<script>
+var dom;
+export default {
+	props:{
+		isCenter : {
+			type : Boolean,
+			default : false
+		},
+		currentIndex : {
+			type : Number,
+			default : 0
+		},
+		size : {
+			type : Number,
+			default : 100
+		},
+		items : {
+			type : Array,
+			default : function () {
+				return []
+			}
+		},
+		activeLineBg : {
+			type : String,
+			default : "linear-gradient(to right, #66BFFF,#3388FF)"
+		},
+		activeColor:{
+			type : String,
+			default : "#333333"
+		},
+		activeLineHeight : {
+			type : Number,
+			default : 6
+		},
+		activeLineWidth : {
+			type : String,
+			default : "36rpx"
+		},
+		color : {
+			type : String,
+			default : "#333333"
+		},
+		margin : {
+			type : Number,
+			default : 0
+		},
+		textAlign : {
+			type : String,
+			default : 'left'
+		},
+		lineHeight : {
+			type : Number,
+			default : 50
+		},
+		fontSize : {
+			type : String,
+			default : '28rpx'
+		}
+	},
+	methods:{
+		navchang : function (index){
+			this.$emit('change', Number(index));
+		}
+	},
+	watch:{
+		currentIndex : function(vn, vo){
+			const dom = weex.requireModule('dom');
+			const el = this.$refs.tabitems[vn];
+			dom.scrollToElement(el, {});
+		}
+	}
+}
+</script>
+<style>
+.grace-nav-bar{height:70rpx; padding-bottom:10rpx; flex-direction:row;}
+.nav-item{width:100rpx; overflow:hidden;}
+.nav-item-title{font-size:28rpx; line-height:50rpx; color:#333333;}
+.nav-active{font-size:30rpx; font-weight:bold;}
+.nav-active-line{width:36rpx; height:6rpx; margin-top:4rpx;}
+.grace-nav-center{justify-content:center; text-align:center;}
+</style>
